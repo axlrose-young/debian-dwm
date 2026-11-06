@@ -78,19 +78,23 @@ static const char *volume_control_dec[] = {"volume-control.sh", "down",NULL};
 static const char *volume_control_mute[] = {"volume-control.sh", "mute",NULL};
 static const char *screenshot_full[] = {"screenshot.sh", "full",NULL};
 static const char *screenshot_select[] = {"screenshot.sh", "select",NULL};
+static const char *lockscreen[] = {"lockscreen-sh",NULL};
 
 #include "movestack.c"
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
+
 	/* Scripts */
-	{ 0 ,				XK_F6,	   spawn,          {.v = brightness_control_inc } }, 
-	{ 0 ,				XK_F5,	   spawn,          {.v = brightness_control_dec } }, 
-	{ 0 ,				XK_F3,	   spawn,          {.v = volume_control_inc } }, 
-	{ 0 ,				XK_F2,	   spawn,          {.v = volume_control_dec } }, 
-	{ 0 ,				XK_F1,	   spawn,          {.v = volume_control_mute } }, 
-	{ 0 ,				XK_Print,  spawn,          {.v = screenshot_full } }, 
-	{ 0|ShiftMask ,			XK_Print,  spawn,          {.v = screenshot_select } }, 
+	{ 0 ,				XK_F6,	   		spawn,          {.v = brightness_control_inc } }, 
+	{ 0 ,				XK_F5,	   		spawn,          {.v = brightness_control_dec } }, 
+	{ 0 ,				XK_F3,	   		spawn,          {.v = volume_control_inc } }, 
+	{ 0 ,				XK_F2,	   		spawn,          {.v = volume_control_dec } }, 
+	{ 0 ,				XK_F1,	   		spawn,          {.v = volume_control_mute } }, 
+	{ 0 ,				XK_Print,  		spawn,          {.v = screenshot_full } }, 
+	{ 0|ShiftMask ,			XK_Print,  		spawn,          {.v = screenshot_select } }, 
+	{ MODKEY,                       XK_bracketright,	spawn,          {.v = lockscreen } },
 	/* End of scripts */
+
+	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
